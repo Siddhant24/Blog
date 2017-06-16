@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Blog List</h1>
+
+    {% if blogpost_list %}
+    <ul>
+
+      {% for blogpost in blogpost_list reversed %}
+      <li>
+        <a href="{{ blogpost.get_absolute_url }}">{{ blogpost.title }}</a> ({{blogpost.post_date}}) --- <a href="{{ blogpost.author.get_absolute_url }}">{{ blogpost.author.name }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no blogposts on the blog.</p>
+    {% endif %}       
+{% endblock %}

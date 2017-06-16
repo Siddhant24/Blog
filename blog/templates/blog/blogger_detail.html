@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+	<h1>Blogger: {{ blogger.name }}</h1>
+	<div style="margin-left:30px, margin-top:30px">
+		<h3>Bio</h3>
+		<p>{{ blogger.bio }}</p>
+		<h3>Blogposts</h3>
+		{% if blogger.blogpost_set.all.count %}
+		<ul>
+			{% for blog in blogger.blogpost_set.all reversed %}
+				<li><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></li>
+			{% endfor %}
+		</ul>	
+		{% else %}
+			<h3>No blogposts from this blogger.</h3>
+		{% endif %}	
+	</div>
+{% endblock %}
+
+  

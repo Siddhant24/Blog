@@ -9,14 +9,13 @@ def index(request):
 
 class BloggerListView(generic.ListView):
 	model = Blogger
-	paginate_by = 10
 
 class BloggerDetailView(generic.DetailView):
 	model = Blogger
 
 class BlogListView(generic.ListView):
 	model = Blogpost
-	paginate_by = 10
+	paginate_by = 5
 
 class BlogDetailView(generic.DetailView):
 	model = Blogpost

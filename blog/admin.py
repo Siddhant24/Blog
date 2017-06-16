@@ -25,6 +25,6 @@ class BlogpostAdmin(admin.ModelAdmin):
 admin.site.register(Blogpost, BlogpostAdmin)
 
 class CommentAdmin(admin.ModelAdmin):
-	list_display = ('commenter', 'blogpost', 'description')
+	list_display = ('id','commenter', 'blogpost', 'post_date','post_time','description')
 
 admin.site.register(Comment, CommentAdmin)

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -15,8 +16,7 @@ class Blogger(models.Model):
 		return self.name
 
 	def get_absolute_url(self):
-		pass
-
+		return reverse('blogger-detail', args=[str(self.id)])
 
 class Blogpost(models.Model):
 	"""
@@ -27,11 +27,15 @@ class Blogpost(models.Model):
 	description = models.CharField(max_length=5000)
 	title = models.CharField(max_length=100)
 
+	class Meta:
+		ordering = ["post_date"]
+
 	def __str__(self):
 		return self.title
 
 	def get_absolute_url(self):
-		pass
+		return reverse('blog-detail', args=[str(self.id)])
+
 
 class Comment(models.Model):
 	"""
@@ -40,11 +44,16 @@ class Comment(models.Model):
 	commenter = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
 	description = models.CharField(max_length=500)
 	blogpost = models.ForeignKey('Blogpost', on_delete=models.CASCADE, null=True)
+	post_date = models.DateField(null=True)
+	post_time = models.TimeField(null=True)
+
+	class Meta:
+		ordering = ["post_date", "post_time"]
 
 	def get_absolute_url(self):
 		pass
 
 	def __str__(self):
 		if(len(self.description)>75):
-			return self.description[:75]
+			return self.description[:75]+'...'
 		return self.description
