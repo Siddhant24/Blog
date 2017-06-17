@@ -9,7 +9,7 @@ class BlogpostInLine(admin.TabularInline):
     extra = 0
 
 class BloggerAdmin(admin.ModelAdmin):
-	list_display = ('user','name', 'bio')
+	list_display = ('user', 'bio')
 	inlines = [BlogpostInLine]
 
 admin.site.register(Blogger, BloggerAdmin)

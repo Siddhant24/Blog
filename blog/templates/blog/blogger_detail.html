@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-	<h1>Blogger: {{ blogger.name }}</h1>
+	<h1>Blogger: {{ blogger.user.username }}</h1>
 	<div style="margin-left:30px, margin-top:30px">
 		<h3>Bio</h3>
 		<p>{{ blogger.bio }}</p>

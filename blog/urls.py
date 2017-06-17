@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^blogger/(?P<pk>\d+)$', views.BloggerDetailView.as_view(), name='blogger-detail'),
     url(r'^blogs/$', views.BlogListView.as_view(), name='blogs'),
     url(r'^(?P<pk>\d+)$', views.BlogDetailView.as_view(), name='blog-detail'),
+    url(r'(?P<pk>\d+)/create/$', views.add_comment, name='add_comment')
 ]

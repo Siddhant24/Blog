@@ -9,7 +9,6 @@ class Blogger(models.Model):
 	Model representing a blogger
 	"""
 	user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-	name = models.CharField(max_length=200)
 	bio = models.CharField(max_length=500)
 
 	def __str__(self):
@@ -41,7 +40,7 @@ class Comment(models.Model):
 	"""
 	Model representing a comment on a blog
 	"""
-	commenter = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+	commenter = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 	description = models.CharField(max_length=500)
 	blogpost = models.ForeignKey('Blogpost', on_delete=models.CASCADE, null=True)
 	post_date = models.DateField(null=True)
