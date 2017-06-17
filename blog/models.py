@@ -12,7 +12,7 @@ class Blogger(models.Model):
 	bio = models.CharField(max_length=500)
 
 	def __str__(self):
-		return self.name
+		return self.user.username
 
 	def get_absolute_url(self):
 		return reverse('blogger-detail', args=[str(self.id)])
